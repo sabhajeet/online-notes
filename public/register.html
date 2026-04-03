@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Center ONLY auth pages (login & register) */
+body {
+  background: #f4f6f8;
+}
+
+/* Wrapper for auth pages */
+.auth-container {
+  background: #fff;
+  padding: 30px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+
+  /* center horizontally + vertically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Heading */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Button */
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-container button:hover {
+  background: #45a049;
+}
+
+/* Link */
+.auth-container a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+.password-box {
+  position: relative;
+  margin: 10px 0;
+}
+
+.password-box input {
+  width: 100%;
+  padding-right: 10px; /* space for eye */
+}
+
+.eye {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+  </style>
+
+
+
+</head>
+<body>
+
+  <!-- <div class="container"> -->
+<div class="auth-container">
+  <h2>Register</h2>
+
+  <form action="/auth/register" method="POST" onsubmit="return validatePasswords()">
+    <input type="email" name="email" placeholder="Email" required />
+
+    <!-- Password -->
+    <div class="password-box">
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <span onclick="togglePassword('password', this)" class="eye">👁️</span>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="password-box">
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+      <span onclick="togglePassword('confirmPassword', this)" class="eye">👁️</span>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <a href="/login.html">Already have account?</a>
+</div>
+
+</body>
+
+<script>
+function validatePasswords() {
+  const pass = document.getElementById("password").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if (pass !== confirm) {
+    alert("Passwords do not match!");
+    return false;
+  }
+  return true;
+}
+
+
+function togglePassword(fieldId, icon) {
+  const input = document.getElementById(fieldId);
+
+  if (input.type === "password") {
+    input.type = "text";
+    icon.textContent = "🙈";
+  } else {
+    input.type = "password";
+    icon.textContent = "👁️";
+  }
+}
+</script>
+
+
+</html>

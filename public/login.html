@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+
+    * {
+  box-sizing: border-box;
+}
+
+      /* Page background */
+.auth-page {
+  background: #f1f3f4;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.auth-container {
+  background: white;
+  padding: 30px;
+  width: 320px;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #202124;
+}
+
+/* Inputs */
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Password wrapper */
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  padding-right: 40px;
+}
+
+/* Eye icon */
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+/* Button */
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+
+  background: #fbbc04;
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.auth-container button:hover {
+  background: #f9ab00;
+}
+
+</style>
+
+</head>
+<body class="auth-page">
+
+  <!-- <div class="container"> -->
+  <div class="auth-container">
+    <h2>Login</h2>
+
+    <form action="/auth/login" method="POST">
+      <input type="email" name="email" placeholder="Email" required />
+      <!-- <input type="password" name="password" placeholder="Password" required /> -->
+       <div class="password-box">
+          <input type="password" id="password" name="password" placeholder="Password" required />
+          <span onclick="togglePassword()" class="eye">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    
+<script>
+function togglePassword() {
+  const pass = document.getElementById("password");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
+</script>
+
+<a href="/register.html">Create account</a>
+  </div>
+
+</body>
+</html>

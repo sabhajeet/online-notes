@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/style.css">
+
+<div class="edit-page">
+  <div class="container">
+    <h2>Edit Note</h2>
+
+    <form action="/notes/update/<%= note._id %>" method="POST">
+      <input name="title" value="<%= note.title %>" required />
+
+      <textarea name="content" rows="8" required>
+<%= note.content %>
+      </textarea>
+
+      <button type="submit">Update Note</button>
+    </form>
+
+    <a href="/dashboard">⬅ Back</a>
+  </div>
+</div>

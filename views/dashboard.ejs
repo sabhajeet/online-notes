@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h2>📝 My Notes</h2>
+    <a href="/auth/logout" class="logout-btn">Logout</a>
+  </div>
+
+  <!-- Add Note Box -->
+  <form action="/notes/add" method="POST" class="note-form">
+    <input type="text" name="title" placeholder="Title">
+    <textarea name="content" placeholder="Take a note..." rows="4"></textarea>
+    <button type="submit">Add</button>
+
+    <select name="color">
+      <option value="note-yellow">🟡 Yellow</option>
+      <option value="note-green">🟢 Green</option>
+      <option value="note-blue">🔵 Blue</option>
+      <option value="note-pink">🌸 Pink</option>
+      <option value="note-purple">🟣 Purple</option>
+    </select>
+
+  </form>
+
+  <!-- Notes Grid -->
+  <div class="notes">
+    <% if (notes.length === 0) { %>
+      <p class="empty">No notes yet...</p>
+    <% } %>
+
+    <% notes.forEach(note => { %>
+      <div class="note-card <%= note.color %>">
+        <h3><%= note.title %></h3>
+        <p><%= note.content %></p>
+
+        <div class="actions">
+          <a href="/notes/edit/<%= note._id %>" class="icon-btn">
+            <span class="material-icons">edit</span>
+          </a>
+
+          <form action="/notes/delete/<%= note._id %>" method="POST" onsubmit="return confirmDelete()">
+                <button class="icon-btn">
+                  <span class="material-icons">delete</span>
+                </button>
+          </form>
+        </div>
+
+        
+      </div>
+    <% }) %>
+  </div>
+
+</div>
+
+<script>
+function confirmDelete() {
+  return confirm("Are you sure you want to delete this note?");
+}
+</script>
