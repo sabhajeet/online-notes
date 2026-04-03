@@ -20,6 +20,11 @@ app.use(
     saveUninitialized: false
   })
 );
+// for render.com mainly
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/login.html");
+});
+
 
 // Routes
 app.use("/auth", require("./routes/auth"));
