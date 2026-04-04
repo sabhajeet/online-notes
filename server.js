@@ -9,8 +9,10 @@ app.set("view engine", "ejs");
 
 connectDB();
 
+// Required for form POST
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+//Static files
 app.use(express.static("public"));
 
 app.use(
@@ -40,6 +42,11 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
   const notes = await Note.find({ user: req.session.userId });
 
   res.render("dashboard", { notes });
+});
+
+//Route to open reset page
+app.get("/reset-password/:token", (req, res) => {
+  res.sendFile(__dirname + "/public/reset.html");
 });
 
 app.listen(3000, () => console.log("Server running"));

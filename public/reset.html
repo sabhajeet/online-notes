@@ -1,0 +1,172 @@
+<!-- <form id="resetForm">
+  <input type="password" name="password" placeholder="New Password" required />
+  <button type="submit">Update Password</button>
+</form>
+
+<script>
+  const token = window.location.pathname.split("/").pop();
+
+  document.getElementById("resetForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const password = e.target.password.value;
+
+    await fetch(`/auth/reset-password/${token}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ password })
+    });
+
+    alert("Password updated!");
+  });
+</script> -->
+
+
+<!-- <form id="resetForm">
+  <input type="password" name="password" placeholder="New Password" required />
+  <button type="submit">Reset Password</button>
+</form>
+
+<script>
+  const form = document.getElementById("resetForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const password = form.password.value;
+
+    // get token from URL
+    const token = window.location.pathname.split("/").pop();
+
+    const res = await fetch(`/auth/reset-password/${token}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await res.text();
+    alert(data);
+  });
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="/css/style.css">
+
+<style>
+  /* Center ONLY auth pages */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+
+  /* width: 100%;
+  max-width: 400px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+  /* Improve password input spacing */
+.auth-container input[type="password"] {
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Success state (optional future use) */
+.success-message {
+  color: green;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Error state */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Button animation */
+.auth-container button {
+  transition: all 0.2s ease;
+}
+
+.auth-container button:active {
+  transform: scale(0.98);
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+<div class="auth-container">
+  <h2>Reset Password</h2>
+  <p class="sub-text">Enter your new password below</p>
+
+  <form id="resetForm">
+    <input type="password" name="password" placeholder="New Password" required />
+    <button type="submit">Reset Password</button>
+    <br>
+    <p class="back-link">
+    <a href="/login.html">Back to Login</a>
+    </p>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById("resetForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const password = form.password.value;
+    const token = window.location.pathname.split("/").pop();
+
+    const res = await fetch(`/auth/reset-password/${token}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await res.text();
+
+    alert(data);
+
+    if (data.includes("successful")) {
+      window.location.href = "/login.html";
+    }
+  });
+</script>
+
+</body>
+</html>

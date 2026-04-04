@@ -20,10 +20,18 @@ const userSchema = new mongoose.Schema(
     isActive: {
       type: Boolean,
       default: true
+    },
+
+    // 👇 ADD HERE
+    resetToken: {
+      type: String
+    },
+    resetTokenExpire: {
+      type: Date
     }
   },
   {
-    timestamps: true // adds createdAt & updatedAt
+    timestamps: true
   }
 );
 
