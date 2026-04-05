@@ -69,10 +69,10 @@ router.post("/forgot-password", async (req, res) => {
   await user.save();
 
   // 🔹 Step 2: Create reset link
-  //const resetLink = `https://online-notes-wris.onrender.com/reset-password/${token}`;
+  const resetLink = `https://online-notes-wris.onrender.com/reset-password/${token}`;
   // const resetLink = `https://localhost:3000/reset-password/${token}`;
-  const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
-  const resetLink = `${BASE_URL}/reset-password/${token}`;
+  // const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+  // const resetLink = `${BASE_URL}/reset-password/${token}`;
 
 
 
@@ -96,7 +96,7 @@ router.post("/forgot-password", async (req, res) => {
     `
   });
 
-  res.send("Password reset link sent to email...\n Check your E-mail, (sent from - sabhajeetkmr9@gmail.com)");
+  res.send("Password reset link sent to email...\n Check your E-mail, (From - sabhajeetkmr9@gmail.com)");
 });
 
 router.post("/reset-password/:token", async (req, res) => {
