@@ -96,7 +96,7 @@ router.post("/forgot-password", async (req, res) => {
     `
   });
 
-  res.send("Password reset link sent to email...\n Check your E-mail!!");
+  res.send("Password reset link sent to email...\n Check your E-mail, (sent from - sabhajeetkmr9@gmail.com)");
 });
 
 router.post("/reset-password/:token", async (req, res) => {
